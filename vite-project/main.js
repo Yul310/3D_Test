@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 
 //Scene
-const scene = new THREE.Scene.Sc
+const scene = new THREE.Scene()
 
 //Create our sphere
 const geometry = new THREE.SphereGeometry(15,32,64)
@@ -11,9 +11,15 @@ const material = new THREE.MeshStandardMaterial({
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
 
+//Light
+const light = new THREE.PointLight(0xffffff,1,100)
+light.position.set(0, 10, 10)
+scene.add(light)
 
 //Camera
-const camera = new THREE.PerspectiveCamera(45, 800, 600)
+const camera = new THREE.PerspectiveCamera(45, 800 / 600)
+camera.position.z = 2
+
 scene.add(camera)
 
 //Renderer
