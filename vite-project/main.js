@@ -35,4 +35,25 @@ const renderer = new THREE.WebGLRenderer({canvas})
 renderer.setSize(sizes.width, sizes.height)
 renderer.render(scene, camera)
 
+//Resize
+window.addEventListener("resize",() => {
+  console.log("resize happenning")
+  //Update Sizes
+  sizes.width = window.innerWidth
+  sizes.height = window.innerHeight
+  //Update Camera
+  camera.aspect = sizes.width / sizes.height
+  camera.updateProjectionMatrix()
+  renderer.setSize(sizes.width, sizes.height)
+})
+
+
+
+const loop = () => {
+  renderer.render(scene, camera)
+  window.requestAnimationFrame(loop)
+}
+
+loop()
+
 
